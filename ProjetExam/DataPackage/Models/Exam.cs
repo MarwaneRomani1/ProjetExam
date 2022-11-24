@@ -16,11 +16,19 @@ namespace ProjetExam.DataPackage.Models
 
         public List<Question> questions { get; }
 
-        public Exam() { }
+        
+        public Exam(String titre, string level, DateTime date, int durre)
+        {
+            this.titre = titre;
+            this.level = level;
+            this.date = date;
+            this.durre = durre;
+        }
 
-        public Exam(int id, string level, DateTime date, int durre)
+        public Exam(int id,String titre,string level, DateTime date, int durre)
         {
             this.id = id;
+            this.titre = titre;
             this.level = level;
             this.date = date;
             this.durre = durre;

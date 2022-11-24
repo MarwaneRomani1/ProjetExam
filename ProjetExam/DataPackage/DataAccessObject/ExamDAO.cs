@@ -1,10 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using ProjetExam.DataPackage.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ProjetExam.DataPackage.DataAccessObject
 {
@@ -30,10 +27,9 @@ namespace ProjetExam.DataPackage.DataAccessObject
                 String level = reader["level"].ToString();
                 DateTime date = DateTime.Parse(reader["date"].ToString());
                 int durre = int.Parse(reader["durre"].ToString());
+                Exam ex = new Exam(id,titre,level,date,durre);
                 
-                Exam p = new Exam(id,level,date,durre);
-                
-                exams.Add(p);
+                exams.Add(ex);
             }
 
             connection.Close();
@@ -59,7 +55,7 @@ namespace ProjetExam.DataPackage.DataAccessObject
                 DateTime date = DateTime.Parse(reader["date"].ToString());
                 int durre = int.Parse(reader["durre"].ToString());
 
-                exam = new Exam(id_exam, level, date, durre);
+                exam = new Exam(id_exam, titre ,level, date, durre);
             }
 
             connection.Close();
@@ -69,7 +65,7 @@ namespace ProjetExam.DataPackage.DataAccessObject
 
         public override int save(Exam exam)
         {
-            String query = "insert into Exam(level,date,durre,titre) VALUES ('"+ exam.level + "'" + exam.date + "'" + "'" + exam.durre + "'" + "'" + exam.titre + "'" + " ";
+            String query = "insert into Exam(level, date, durre, titre) VALUES('" + exam.level + "'," + "'" + exam.date.ToString() + "'," + "', 60, 'UML');";
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             int result = command.ExecuteNonQuery();
