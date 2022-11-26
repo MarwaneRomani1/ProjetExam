@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace ProjetExam.DataPackage.DataAccessObject
 {
-    internal class ExamDAO : DataAccessObject<Exam>
+    internal class ExamQuestionsDAO : DataAccessObject<Exam>
     {
-        public ExamDAO(SqlConnection connection) : base(connection) { }
+        public ExamQuestionsDAO(SqlConnection connection) : base(connection) { }
 
 
         public override List<Exam> getAll()

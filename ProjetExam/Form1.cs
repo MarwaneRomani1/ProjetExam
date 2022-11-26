@@ -22,7 +22,7 @@ namespace ProjetExam
             button_supprimer.Enabled = false;
 
             // fetch all exams from the DB
-            ExamDAO examDAO = new ExamDAO(connection);
+            ExamQuestionsDAO examDAO = new ExamQuestionsDAO(connection);
             List<Exam> result = examDAO.getAll();
 
             foreach (var exam in result)
@@ -30,6 +30,8 @@ namespace ProjetExam
                 comboBox1.Items.Add(exam.titre);
                 ExamDataSource.addExam(exam);
             }
+
+            question_grid_view.Visible = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,6 +40,10 @@ namespace ProjetExam
             button_supprimer.Enabled = true;
      
             ExamDataSource.setSelectedExam(comboBox1.SelectedIndex);
+
+            // fetch all questions for selected exam
+            
+            question_grid_view.Visible = true;
         }
 
         private void button_nouveau_Click(object sender, EventArgs e)
@@ -50,6 +56,12 @@ namespace ProjetExam
         {
             ExamForm productForm = new ExamForm("modification");
             productForm.ShowDialog();
+        }
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

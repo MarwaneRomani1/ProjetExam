@@ -102,7 +102,7 @@
             this.panel_exam_formulaire.Controls.Add(this.label4);
             this.panel_exam_formulaire.Controls.Add(this.level_picker);
             this.panel_exam_formulaire.Controls.Add(this.label3);
-            this.panel_exam_formulaire.Location = new System.Drawing.Point(31, 32);
+            this.panel_exam_formulaire.Location = new System.Drawing.Point(23, 19);
             this.panel_exam_formulaire.Name = "panel_exam_formulaire";
             this.panel_exam_formulaire.Size = new System.Drawing.Size(349, 265);
             this.panel_exam_formulaire.TabIndex = 8;
