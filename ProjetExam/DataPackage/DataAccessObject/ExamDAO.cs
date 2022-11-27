@@ -1,13 +1,14 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.SqlServer.Server;
 using ProjetExam.DataPackage.Models;
 using System.Collections.Generic;
 
 
 namespace ProjetExam.DataPackage.DataAccessObject
 {
-    internal class ExamQuestionsDAO : DataAccessObject<Exam>
+    internal class ExamDAO : DataAccessObject<Exam>
     {
-        public ExamQuestionsDAO(SqlConnection connection) : base(connection) { }
+        public ExamDAO(SqlConnection connection) : base(connection) { }
 
 
         public override List<Exam> getAll()
@@ -65,7 +66,7 @@ namespace ProjetExam.DataPackage.DataAccessObject
 
         public override int save(Exam exam)
         {
-            String query = "insert into Exam(level, date, durre, titre) VALUES('" + exam.level + "'," + "'" + exam.date.ToString() + "'," + "', 60, 'UML');";
+            String query = "insert into Exam(level, durre, titre , date) VALUES('" + exam.level + "'," + exam.durre + ",'" + exam.titre + "'," + exam.date + ");";
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             int result = command.ExecuteNonQuery();

@@ -64,7 +64,7 @@ namespace ProjetExam.DataPackage.DataAccessObject
 
         public override int save(Question question)
         {
-            String query = "insert into Question(question,note) VALUES ('" + question.question + "',"+ question.note + ";";
+            String query = "insert into Question(question,note) VALUES ('" + question.question + "',"+ question.note + ");";
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             int result = command.ExecuteNonQuery();
@@ -87,6 +87,35 @@ namespace ProjetExam.DataPackage.DataAccessObject
         public override int delete(Question t)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Question> getAllQuestionsNotInserted(int examId)
+        {
+            List<Question> questions = new List<Question>();
+
+            connection.Open();
+
+            String query = "SELECT id_question, question, note FROM Question q WHERE q.id_question not in (select  id_question from ExamQuestion WHERE id_exam =" + examId + ");";
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                int id = int.Parse(reader["id_question"].ToString());
+
+                String question = reader["question"].ToString();
+
+                int note = int.Parse(reader["note"].ToString());
+
+                Question ques = new Question(id, question, note);
+
+                questions.Add(ques);
+            }
+
+            connection.Close();
+
+            return questions;
+
         }
 
     }

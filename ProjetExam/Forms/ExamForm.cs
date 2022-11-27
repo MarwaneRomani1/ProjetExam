@@ -48,7 +48,7 @@ namespace ProjetExam.Forms
         
         private void button_save_Click(object sender, EventArgs e)
         {
-            ExamQuestionsDAO examDAO = new ExamQuestionsDAO(connection);
+            ExamDAO examDAO = new ExamDAO(connection);
             int result;
             
             bool isValidOp = (titre_picker.Text.Length != 0 && 

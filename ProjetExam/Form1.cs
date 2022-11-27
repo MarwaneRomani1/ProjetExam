@@ -20,9 +20,10 @@ namespace ProjetExam
             //disable button modify and delete
             button_modifier.Enabled = false;
             button_supprimer.Enabled = false;
+            
 
             // fetch all exams from the DB
-            ExamQuestionsDAO examDAO = new ExamQuestionsDAO(connection);
+            ExamDAO examDAO = new ExamDAO(connection);
             List<Exam> result = examDAO.getAll();
 
             foreach (var exam in result)
@@ -31,7 +32,6 @@ namespace ProjetExam
                 ExamDataSource.addExam(exam);
             }
 
-            question_grid_view.Visible = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,10 +41,7 @@ namespace ProjetExam
      
             ExamDataSource.setSelectedExam(comboBox1.SelectedIndex);
 
-            // fetch all questions for selected exam
-            
-            question_grid_view.Visible = true;
-        }
+           }
 
         private void button_nouveau_Click(object sender, EventArgs e)
         {
@@ -54,10 +51,21 @@ namespace ProjetExam
 
         private void button_modifier_Click(object sender, EventArgs e)
         {
-            ExamForm productForm = new ExamForm("modification");
-            productForm.ShowDialog();
+            ExamForm examForm = new ExamForm("modification");
+            examForm.ShowDialog();
         }
 
+        private void button_manage_questions_Click(object sender, EventArgs e)
+        {
+            QuestionManager questionsForm;
+            if (button_modifier.Enabled != false)
+                questionsForm = new QuestionManager("exam questions");
+            else
+                questionsForm = new QuestionManager();
+            
+            questionsForm.ShowDialog();
+        
+            }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

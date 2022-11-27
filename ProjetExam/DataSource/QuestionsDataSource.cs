@@ -9,27 +9,29 @@ namespace ProjetExam.DataSource
 {
     internal class QuestionsDataSource
     {
-        private static List<Question> questions = new List<Question>();
-        private static int selectedQuestion;
+        private List<Question> questions = new List<Question>();
+        private int selectedQuestion;
 
-        private QuestionsDataSource() { }
+        public QuestionsDataSource() {
+        
+        }
 
-        public static List<Question> getQuestionsList()
+        public List<Question> getQuestionsList()
         {
             return questions;
         }
 
-        public static Question getSelectedExam()
+        public Question getSelectedQuestion()
         {
             return questions[selectedQuestion];
         }
 
-        public static void setSelectedExam(int index)
+        public void setSelectedQuestion(int index)
         {
             selectedQuestion = index;
         }
 
-        public static void addExam(Question question)
+        public void addQuestion(Question question)
         {
             questions.Add(question);
         }
@@ -38,6 +40,11 @@ namespace ProjetExam.DataSource
         {
             questions.Clear();
             selectedQuestion = -1;
+        }
+
+        internal void remove(int index)
+        {
+            questions.RemoveAt(index);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace ProjetExam.DataSource
     internal class ExamDataSource
     {
         private static List<Exam> exams = new List<Exam>();
-        private static int selectedExam;
+        public static int selectedExam { get; set; }
 
         private ExamDataSource() { }
 
@@ -23,6 +23,10 @@ namespace ProjetExam.DataSource
         public static void setSelectedExam(int index)
         {
             selectedExam = index;
+        }
+        public static int getSelectedIndex()
+        {
+            return selectedExam;
         }
 
         public static void addExam(Exam Exam)

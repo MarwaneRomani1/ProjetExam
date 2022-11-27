@@ -8,13 +8,12 @@ namespace ProjetExam.DataPackage.Models
 {
     internal class Question
     {
+        public int id { get; set; }
         public String question { get; set; }
         public int note { get; set; }
+        public String type { get; set; }
 
         
-        public String type { get; set; }
-        public int id { get; set; }
-
         public Question(string question, int note)
         {
             this.question = question;
