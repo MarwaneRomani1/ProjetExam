@@ -48,7 +48,8 @@ namespace ProjetExam.Forms
 
         
             if (this.state == "exam questions")
-            {       
+            {
+                exam_titre.Text = ExamDataSource.getSelectedExam().titre;
                 exQuestionsList = exQuestionsDAO.getAll();
                 renderUI(exQuestionsList, comboBox3);
                 // fetch other questions (not in the exam)
@@ -142,6 +143,22 @@ namespace ProjetExam.Forms
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void button_retirer_question_Click(object sender, EventArgs e)
+        {
+            ExQuestionsDAO dao = new ExQuestionsDAO(connection, ExamDataSource.getSelectedExam().id);
+            Question question = allQuestionsDS.getSelectedQuestion();
+
+            int result = dao.delete(question);
+
+            if (result > 0)
+            {
+                SuccessForm success = new SuccessForm();
+                success.ShowDialog();
+                comboBox2.Items.Add(question.question);
+                comboBox3.Items.RemoveAt(comboBox3.SelectedIndex);
+            }
         }
     }
 }

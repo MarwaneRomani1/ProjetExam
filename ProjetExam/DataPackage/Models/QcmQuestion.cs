@@ -8,27 +8,9 @@ namespace ProjetExam.DataPackage.Models
 {
     internal class QcmQuestion : Question
     {
-        private Dictionary<string, bool> reponses = new Dictionary<string, bool>();
+        public int id_qcm { get; set; } 
 
-        public QcmQuestion(string question, int note) : base(question, note)
-        {
-                                   
-        }
-
-        public void addReponse(String reponse, bool isCorrect)
-        {
-            reponses.Add(reponse, isCorrect);
-        }
-
-        public List<String> getAnswers()
-        {
-            List<String> answers = new List<String>();
-            foreach (var answer in reponses)    
-            {
-                answers.Add(answer.Key);
-            }
-            return answers;
-        }
+        public QcmQuestion(string question, int note) : base(question, note) { }
     }
 }
 

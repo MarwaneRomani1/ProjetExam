@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjetExam.DataPackage.Models;
+using Azure;
 
 namespace ProjetExam.Forms
 {
@@ -19,6 +20,8 @@ namespace ProjetExam.Forms
         private SqlConnection connection = SQLServerConnection.connect(@"Data Source=DESKTOP-83J8IV6;Initial Catalog=Exam;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False");
         private QuestionManager manager;
         private String type;
+
+        private Dictionary<string, bool> choices = new Dictionary<string, bool>();
 
         public QuestionForm()
         {
@@ -63,6 +66,10 @@ namespace ProjetExam.Forms
         {
             QuestionDAO questionDAO = new QuestionDAO(connection);
 
+            String question = textBox_question.Text;
+            int note = int.Parse(textBox_note.Text);
+
+
             if (type == "ouverte")
             {
                 if (textBox_question.Text.Length == 0)
@@ -73,9 +80,6 @@ namespace ProjetExam.Forms
                 }
                 else
                 {
-                    String question = textBox_question.Text;
-                    int note = int.Parse(textBox_note.Text);
-
                     Question q = new Question(question, note);
 
                     int result = questionDAO.save(q);
@@ -94,6 +98,26 @@ namespace ProjetExam.Forms
                     label_error.ForeColor = Color.White;
                     label_error.BackColor = Color.Red;
                 }
+                else
+                {   
+                    QcmQuestion qcm = new QcmQuestion(question, note);
+                    
+                    
+                    int result = questionDAO.save(qcm);
+                    
+                    // save qcm question
+                    QcmDAO qcmDAO = new QcmDAO(connection);
+                    qcmDAO.save(qcm);
+
+                    //save all choices
+                    ChoixDAO choixDAO = new ChoixDAO(connection);
+                    foreach (var item in choices)
+                    {
+                        choixDAO.save(item.Key, item.Value, qcm.id_qcm);
+                    }
+                    SuccessForm success = new SuccessForm();
+                    success.ShowDialog();
+                }
             }
         }
 
@@ -111,6 +135,18 @@ namespace ProjetExam.Forms
         private void reloadData(object sender, FormClosedEventArgs e)
         {
             manager.reload();
+        }
+
+
+        // add choice button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String choix = textBox_choix.Text;
+            bool isCorrect = checkBox1.Checked;
+
+            choices.Add(choix, isCorrect);
+            
+            comboBox_choix.Items.Add(choix);
         }
     }
 }

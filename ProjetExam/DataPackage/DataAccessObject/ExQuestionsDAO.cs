@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using Microsoft.Data.SqlClient;
 using ProjetExam.DataPackage.Models;
+using ProjetExam.DataSource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,9 +65,14 @@ namespace ProjetExam.DataPackage.DataAccessObject
            throw new NotImplementedException();
         }
 
-        public override int delete(Question t)
+        public override int delete(Question q)
         {
-            throw new NotImplementedException();
+            String query = "DELETE FROM ExamQuestion WHERE id_exam = " + ExamDataSource.getSelectedExam().id + " and id_question = " + q.id + ";";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            int result = command.ExecuteNonQuery();
+            connection.Close();
+            return result;
         }
     }
 }

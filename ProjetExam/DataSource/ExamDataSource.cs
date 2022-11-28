@@ -33,5 +33,9 @@ namespace ProjetExam.DataSource
         {
             exams.Add(Exam);
         }
+        public static void clearList()
+        {
+            exams.Clear();
+        }
     }
 }

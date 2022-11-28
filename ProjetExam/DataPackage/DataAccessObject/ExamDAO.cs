@@ -26,7 +26,7 @@ namespace ProjetExam.DataPackage.DataAccessObject
                 int id = int.Parse(reader["id_exam"].ToString());
                 String titre = reader["titre"].ToString();
                 String level = reader["level"].ToString();
-                DateTime date = DateTime.Parse(reader["date"].ToString());
+                String date = reader["date"].ToString();
                 int durre = int.Parse(reader["durre"].ToString());
                 Exam ex = new Exam(id,titre,level,date,durre);
                 
@@ -53,7 +53,7 @@ namespace ProjetExam.DataPackage.DataAccessObject
                 int id_exam = int.Parse(reader["id_exam"].ToString());
                 String titre = reader["titre"].ToString();
                 String level = reader["level"].ToString();
-                DateTime date = DateTime.Parse(reader["date"].ToString());
+                String date = reader["date"].ToString();
                 int durre = int.Parse(reader["durre"].ToString());
 
                 exam = new Exam(id_exam, titre ,level, date, durre);
@@ -66,7 +66,7 @@ namespace ProjetExam.DataPackage.DataAccessObject
 
         public override int save(Exam exam)
         {
-            String query = "insert into Exam(level, durre, titre , date) VALUES('" + exam.level + "'," + exam.durre + ",'" + exam.titre + "'," + exam.date + ");";
+            String query = "insert into Exam(level,date, durre, titre) VALUES('" + exam.level + "','" + exam.date + "'," + exam.durre + ",'" + exam.titre + "');";
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
             int result = command.ExecuteNonQuery();
@@ -93,7 +93,14 @@ namespace ProjetExam.DataPackage.DataAccessObject
         
         public override int update(Exam exam, string[] arguments)
         {
-            throw new NotImplementedException();
+            String query = "update Exam set  level = '" + arguments[0] + "', date='" + arguments[1] + "',durre=" + int.Parse(arguments[2]) + ",titre='" + arguments[3]+"' where id_exam=" + exam.id+ ";";
+            connection.Open();
+            SqlCommand command = new SqlCommand(query, connection);
+            int result = command.ExecuteNonQuery();
+            connection.Close();
+
+            return result;
+
         }
     }
 }

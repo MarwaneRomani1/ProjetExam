@@ -45,13 +45,13 @@ namespace ProjetExam
 
         private void button_nouveau_Click(object sender, EventArgs e)
         {
-            ExamForm productForm = new ExamForm();
+            ExamForm productForm = new ExamForm(this);
             productForm.ShowDialog();
         }
 
         private void button_modifier_Click(object sender, EventArgs e)
         {
-            ExamForm examForm = new ExamForm("modification");
+            ExamForm examForm = new ExamForm(this,"modification");
             examForm.ShowDialog();
         }
 
@@ -67,9 +67,24 @@ namespace ProjetExam
         
             }
 
+        public void reload()
+        {
+            ExamDataSource.clearList();
+            comboBox1.Items.Clear();
+
+            ExamDAO examDAO = new ExamDAO(connection);
+            List<Exam> result = examDAO.getAll();
+
+            foreach (var exam in result)
+            {
+                comboBox1.Items.Add(exam.titre);
+                ExamDataSource.addExam(exam);
+            }
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+           
         }
     }
 }

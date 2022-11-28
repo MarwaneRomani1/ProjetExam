@@ -36,8 +36,7 @@
             this.label_error = new System.Windows.Forms.Label();
             this.panel_choix = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_choix = new System.Windows.Forms.TextBox();
             this.comboBox_choix = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button_enregistrer = new System.Windows.Forms.Button();
@@ -48,6 +47,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button_qcm = new System.Windows.Forms.Button();
             this.button_nouvelle_question = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_question_form.SuspendLayout();
@@ -125,9 +127,11 @@
             // 
             // panel_choix
             // 
-            this.panel_choix.Controls.Add(this.button1);
-            this.panel_choix.Controls.Add(this.textBox2);
+            this.panel_choix.Controls.Add(this.label8);
             this.panel_choix.Controls.Add(this.label7);
+            this.panel_choix.Controls.Add(this.checkBox1);
+            this.panel_choix.Controls.Add(this.button1);
+            this.panel_choix.Controls.Add(this.textBox_choix);
             this.panel_choix.Controls.Add(this.comboBox_choix);
             this.panel_choix.Controls.Add(this.label6);
             this.panel_choix.Location = new System.Drawing.Point(22, 113);
@@ -147,24 +151,15 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Ajouter";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // textBox_choix
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 65);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(257, 32);
-            this.textBox2.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(12, 47);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 15);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Ajouter Un choix";
+            this.textBox_choix.Location = new System.Drawing.Point(12, 65);
+            this.textBox_choix.Multiline = true;
+            this.textBox_choix.Name = "textBox_choix";
+            this.textBox_choix.Size = new System.Drawing.Size(224, 32);
+            this.textBox_choix.TabIndex = 5;
             // 
             // comboBox_choix
             // 
@@ -278,6 +273,35 @@
             this.button_nouvelle_question.UseVisualStyleBackColor = false;
             this.button_nouvelle_question.Click += new System.EventHandler(this.button_normal_question_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(251, 75);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(236, 47);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 15);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "correct";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(8, 47);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 15);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Ajouter Un choix";
+            // 
             // QuestionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -321,9 +345,11 @@
         private Panel panel_choix;
         private Label label6;
         private Button button1;
-        private TextBox textBox2;
-        private Label label7;
+        private TextBox textBox_choix;
         private ComboBox comboBox_choix;
         private Label label_error;
+        private Label label8;
+        private Label label7;
+        private CheckBox checkBox1;
     }
 }

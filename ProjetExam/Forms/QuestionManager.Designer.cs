@@ -43,6 +43,7 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button_nouvelle_question = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.exam_titre = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_exam_container.SuspendLayout();
@@ -83,6 +84,7 @@
             // panel_exam_container
             // 
             this.panel_exam_container.BackColor = System.Drawing.Color.White;
+            this.panel_exam_container.Controls.Add(this.exam_titre);
             this.panel_exam_container.Controls.Add(this.button_retirer_question);
             this.panel_exam_container.Controls.Add(this.button2_modifier_question);
             this.panel_exam_container.Controls.Add(this.button_ajoute_question_exam);
@@ -99,12 +101,13 @@
             this.button_retirer_question.FlatAppearance.BorderSize = 0;
             this.button_retirer_question.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_retirer_question.ForeColor = System.Drawing.Color.White;
-            this.button_retirer_question.Location = new System.Drawing.Point(249, 26);
+            this.button_retirer_question.Location = new System.Drawing.Point(247, 44);
             this.button_retirer_question.Name = "button_retirer_question";
             this.button_retirer_question.Size = new System.Drawing.Size(84, 39);
             this.button_retirer_question.TabIndex = 8;
             this.button_retirer_question.Text = "retirer";
             this.button_retirer_question.UseVisualStyleBackColor = false;
+            this.button_retirer_question.Click += new System.EventHandler(this.button_retirer_question_Click);
             // 
             // button2_modifier_question
             // 
@@ -112,7 +115,7 @@
             this.button2_modifier_question.FlatAppearance.BorderSize = 0;
             this.button2_modifier_question.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2_modifier_question.ForeColor = System.Drawing.Color.White;
-            this.button2_modifier_question.Location = new System.Drawing.Point(148, 26);
+            this.button2_modifier_question.Location = new System.Drawing.Point(146, 44);
             this.button2_modifier_question.Name = "button2_modifier_question";
             this.button2_modifier_question.Size = new System.Drawing.Size(84, 39);
             this.button2_modifier_question.TabIndex = 7;
@@ -126,7 +129,7 @@
             this.button_ajoute_question_exam.FlatAppearance.BorderSize = 0;
             this.button_ajoute_question_exam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_ajoute_question_exam.ForeColor = System.Drawing.Color.White;
-            this.button_ajoute_question_exam.Location = new System.Drawing.Point(37, 26);
+            this.button_ajoute_question_exam.Location = new System.Drawing.Point(35, 44);
             this.button_ajoute_question_exam.Name = "button_ajoute_question_exam";
             this.button_ajoute_question_exam.Size = new System.Drawing.Size(84, 39);
             this.button_ajoute_question_exam.TabIndex = 6;
@@ -138,7 +141,7 @@
             // 
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(45, 108);
+            this.comboBox3.Location = new System.Drawing.Point(43, 126);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(270, 23);
             this.comboBox3.TabIndex = 4;
@@ -148,7 +151,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(45, 80);
+            this.label3.Location = new System.Drawing.Point(43, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 20);
             this.label3.TabIndex = 5;
@@ -228,6 +231,14 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Toutes les questions";
             // 
+            // exam_titre
+            // 
+            this.exam_titre.AutoSize = true;
+            this.exam_titre.Location = new System.Drawing.Point(35, 17);
+            this.exam_titre.Name = "exam_titre";
+            this.exam_titre.Size = new System.Drawing.Size(0, 15);
+            this.exam_titre.TabIndex = 9;
+            // 
             // QuestionManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -266,5 +277,6 @@
         private Button button1_modifier_question;
         private Button button_retirer_question;
         private Button button_delete_question;
+        private Label exam_titre;
     }
 }

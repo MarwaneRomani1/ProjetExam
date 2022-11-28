@@ -146,6 +146,7 @@
             // 
             this.date_picker.CustomFormat = "yyyy-mm-dd  hh:mm:ss";
             this.date_picker.Location = new System.Drawing.Point(77, 116);
+            this.date_picker.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.date_picker.Name = "date_picker";
             this.date_picker.Size = new System.Drawing.Size(200, 23);
             this.date_picker.TabIndex = 8;
@@ -217,6 +218,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ExamForm";
             this.Text = "ExamForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.reloadData);
             this.Load += new System.EventHandler(this.ExamForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
