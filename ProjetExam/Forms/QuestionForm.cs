@@ -113,6 +113,7 @@ namespace ProjetExam.Forms
                     ChoixDAO choixDAO = new ChoixDAO(connection);
                     foreach (var item in choices)
                     {
+                        qcm.addChoix(item.Key, item.Value);
                         choixDAO.save(item.Key, item.Value, qcm.id_qcm);
                     }
                     SuccessForm success = new SuccessForm();

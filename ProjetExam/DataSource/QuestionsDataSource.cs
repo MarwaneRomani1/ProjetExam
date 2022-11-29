@@ -10,7 +10,7 @@ namespace ProjetExam.DataSource
     internal class QuestionsDataSource
     {
         private List<Question> questions = new List<Question>();
-        private int selectedQuestion;
+        public int selectedQuestion { get; set; }
 
         public QuestionsDataSource() {
         
@@ -23,6 +23,7 @@ namespace ProjetExam.DataSource
 
         public Question getSelectedQuestion()
         {
+
             return questions[selectedQuestion];
         }
 
@@ -39,10 +40,10 @@ namespace ProjetExam.DataSource
         public void clearDataSource()
         {
             questions.Clear();
-            selectedQuestion = -1;
+            selectedQuestion = 0;
         }
 
-        internal void remove(int index)
+        public void remove(int index)
         {
             questions.RemoveAt(index);
         }

@@ -121,6 +121,7 @@
             this.button_supprimer.TabIndex = 5;
             this.button_supprimer.Text = "supprimer";
             this.button_supprimer.UseVisualStyleBackColor = false;
+            this.button_supprimer.Click += new System.EventHandler(this.button_supprimer_Click);
             // 
             // panel2
             // 

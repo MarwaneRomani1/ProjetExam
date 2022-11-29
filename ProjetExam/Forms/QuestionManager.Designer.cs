@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel_exam_container = new System.Windows.Forms.Panel();
+            this.exam_titre = new System.Windows.Forms.Label();
             this.button_retirer_question = new System.Windows.Forms.Button();
             this.button2_modifier_question = new System.Windows.Forms.Button();
             this.button_ajoute_question_exam = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button_nouvelle_question = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.exam_titre = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_exam_container.SuspendLayout();
@@ -94,6 +94,14 @@
             this.panel_exam_container.Name = "panel_exam_container";
             this.panel_exam_container.Size = new System.Drawing.Size(408, 230);
             this.panel_exam_container.TabIndex = 6;
+            // 
+            // exam_titre
+            // 
+            this.exam_titre.AutoSize = true;
+            this.exam_titre.Location = new System.Drawing.Point(35, 17);
+            this.exam_titre.Name = "exam_titre";
+            this.exam_titre.Size = new System.Drawing.Size(0, 15);
+            this.exam_titre.TabIndex = 9;
             // 
             // button_retirer_question
             // 
@@ -182,6 +190,7 @@
             this.button_delete_question.TabIndex = 6;
             this.button_delete_question.Text = "supprimer";
             this.button_delete_question.UseVisualStyleBackColor = false;
+            this.button_delete_question.Click += new System.EventHandler(this.button_delete_question_Click);
             // 
             // button1_modifier_question
             // 
@@ -230,14 +239,6 @@
             this.label2.Size = new System.Drawing.Size(141, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Toutes les questions";
-            // 
-            // exam_titre
-            // 
-            this.exam_titre.AutoSize = true;
-            this.exam_titre.Location = new System.Drawing.Point(35, 17);
-            this.exam_titre.Name = "exam_titre";
-            this.exam_titre.Size = new System.Drawing.Size(0, 15);
-            this.exam_titre.TabIndex = 9;
             // 
             // QuestionManager
             // 

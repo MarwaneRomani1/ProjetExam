@@ -17,6 +17,7 @@ namespace ProjetExam.DataSource
 
         public static Exam getSelectedExam()
         {
+            if (exams.Count == 0) return null;
             return exams[selectedExam];
         }
 

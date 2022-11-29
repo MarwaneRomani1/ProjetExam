@@ -44,14 +44,15 @@ namespace ProjetExam.Forms
 
             //Data access objects for questions questions:
             QuestionDAO questionDAO = new QuestionDAO(connection);
-            ExQuestionsDAO exQuestionsDAO = new ExQuestionsDAO(connection, ExamDataSource.getSelectedExam().id);
 
         
             if (this.state == "exam questions")
             {
+                ExQuestionsDAO exQuestionsDAO = new ExQuestionsDAO(connection, ExamDataSource.getSelectedExam().id);
                 exam_titre.Text = ExamDataSource.getSelectedExam().titre;
                 exQuestionsList = exQuestionsDAO.getAll();
                 renderUI(exQuestionsList, comboBox3);
+
                 // fetch other questions (not in the exam)
                 questionsList = questionDAO.getAllQuestionsNotInserted(ExamDataSource.getSelectedExam().id);
 
@@ -78,14 +79,14 @@ namespace ProjetExam.Forms
         private void renderUI(List<Question> questions, ComboBox comboBox)
         {
             foreach (Question question in questions)
-            {
+            {   
                 comboBox.Items.Add(question.question);
             }
         }
 
         private void modifier_question(object sender, EventArgs e)
         {
-
+            
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,11 +127,36 @@ namespace ProjetExam.Forms
             question.ShowDialog();
             
         }
+
+        private void button_delete_question_Click(object sender, EventArgs e)
+        {   
+            ExQuestionsDAO exQuestionsDAO = new ExQuestionsDAO(connection);
+            QuestionDAO questionDAO = new QuestionDAO(connection);
         
+            String type = allQuestionsDS.getSelectedQuestion().type;
+
+           
+            ChoixDAO choixDAO = new ChoixDAO(connection);
+            QcmDAO qcmDAO = new QcmDAO(connection);
+          
+            choixDAO.delete(allQuestionsDS.getSelectedQuestion());
+            qcmDAO.delete(allQuestionsDS.getSelectedQuestion());
+            exQuestionsDAO.deleteQuestionFromAllExam(allQuestionsDS.getSelectedQuestion());
+            int result = questionDAO.delete(allQuestionsDS.getSelectedQuestion());
+
+            if (result > 0)
+            {
+                SuccessForm success = new SuccessForm();
+                success.ShowDialog();
+                reload();
+            }
+        }
+
         public void reload()
         {
             comboBox2.Items.Clear();
             QuestionDAO questionDAO = new QuestionDAO(connection);
+            allQuestionsDS.setSelectedQuestion(0);
 
             if (this.state == "exam")
                 questionsList = questionDAO.getAllQuestionsNotInserted(ExamDataSource.getSelectedExam().id);
@@ -140,11 +166,7 @@ namespace ProjetExam.Forms
             renderUI(questionsList, comboBox2);
         }
 
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
+        
         private void button_retirer_question_Click(object sender, EventArgs e)
         {
             ExQuestionsDAO dao = new ExQuestionsDAO(connection, ExamDataSource.getSelectedExam().id);
@@ -160,5 +182,11 @@ namespace ProjetExam.Forms
                 comboBox3.Items.RemoveAt(comboBox3.SelectedIndex);
             }
         }
+        
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
     }
 }

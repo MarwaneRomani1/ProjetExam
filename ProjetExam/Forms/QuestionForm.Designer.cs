@@ -35,6 +35,9 @@
             this.panel_question_form = new System.Windows.Forms.Panel();
             this.label_error = new System.Windows.Forms.Label();
             this.panel_choix = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox_choix = new System.Windows.Forms.TextBox();
             this.comboBox_choix = new System.Windows.Forms.ComboBox();
@@ -47,9 +50,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button_qcm = new System.Windows.Forms.Button();
             this.button_nouvelle_question = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_question_form.SuspendLayout();
@@ -99,7 +99,7 @@
             this.panel2.Controls.Add(this.button_nouvelle_question);
             this.panel2.Location = new System.Drawing.Point(24, 107);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(637, 433);
+            this.panel2.Size = new System.Drawing.Size(681, 433);
             this.panel2.TabIndex = 3;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -138,6 +138,35 @@
             this.panel_choix.Name = "panel_choix";
             this.panel_choix.Size = new System.Drawing.Size(411, 113);
             this.panel_choix.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(8, 47);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 15);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Ajouter Un choix";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(236, 47);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 15);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "correct";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(251, 75);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -272,35 +301,6 @@
             this.button_nouvelle_question.Text = "Question Reguliaire";
             this.button_nouvelle_question.UseVisualStyleBackColor = false;
             this.button_nouvelle_question.Click += new System.EventHandler(this.button_normal_question_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(251, 75);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(236, 47);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 15);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "correct";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(8, 47);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(96, 15);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Ajouter Un choix";
             // 
             // QuestionForm
             // 

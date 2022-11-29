@@ -21,7 +21,20 @@ namespace ProjetExam.DataPackage.DataAccessObject
 
         public override QcmQuestion getOne(int id)
         {
-            throw new NotImplementedException();
+            connection.Open();
+
+            String query = "select * from QcmQuestion where id_question=" + id + ";";
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            QcmQuestion question = null;
+            while (reader.Read())
+            {
+                question = new QcmQuestion(reader["question"].ToString(), int.Parse(reader["note"].ToString()));
+            }
+
+            return question;
+
         }
 
         public override int save(QcmQuestion q)
@@ -45,6 +58,17 @@ namespace ProjetExam.DataPackage.DataAccessObject
         {
             throw new NotImplementedException();
         }
+
+        public int delete(Question q)
+        {
+            String query = "DELETE FROM QcmQuestion WHERE id_question = " + q.id + ";";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            int result = command.ExecuteNonQuery();
+            connection.Close();
+            return result;
+        }
+
         public override int delete(QcmQuestion t)
         {
             throw new NotImplementedException();

@@ -18,6 +18,7 @@ namespace ProjetExam.DataPackage.DataAccessObject
             this.idExam = idExam;
         }
 
+        public ExQuestionsDAO(SqlConnection connection) : base(connection) { }
 
         public override List<Question> getAll()
         {
@@ -68,6 +69,26 @@ namespace ProjetExam.DataPackage.DataAccessObject
         public override int delete(Question q)
         {
             String query = "DELETE FROM ExamQuestion WHERE id_exam = " + ExamDataSource.getSelectedExam().id + " and id_question = " + q.id + ";";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            int result = command.ExecuteNonQuery();
+            connection.Close();
+            return result;
+        }
+
+        public int deleteQuestionFromAllExam(Question q)
+        {
+            String query = "DELETE FROM ExamQuestion WHERE id_question = " + q.id + ";";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            int result = command.ExecuteNonQuery();
+            connection.Close();
+            return result;
+        }
+
+        public int delete()
+        {
+            String query = "DELETE FROM ExamQuestion WHERE id_exam = " + ExamDataSource.getSelectedExam().id + ";";
             SqlCommand command = new SqlCommand(query, connection);
             connection.Open();
             int result = command.ExecuteNonQuery();

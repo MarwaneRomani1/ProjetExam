@@ -86,5 +86,21 @@ namespace ProjetExam
         {
            
         }
+
+        private void button_supprimer_Click(object sender, EventArgs e)
+        {
+            ExamDAO examDAO = new ExamDAO(connection);
+            ExQuestionsDAO exQuestionsDAO = new ExQuestionsDAO(connection,ExamDataSource.getSelectedExam().id);
+
+            exQuestionsDAO.delete();
+
+            int result = examDAO.delete(ExamDataSource.getSelectedExam());
+            if (result > 0)
+            {
+                SuccessForm success = new SuccessForm();
+                success.ShowDialog();
+                this.reload();
+            }
+        }
     }
 }
